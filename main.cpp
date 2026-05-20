@@ -55,6 +55,27 @@ for (int i = 0; i < qtdAlunos; i++)
 
 }
 
+cout << " \n=== RELATÓRIO ===" << endl;
+int aprovados = 0, recuperacao = 0, reprovados = 0;
+
+for (int i = 0; i < qtdAlunos; i++)
+{
+    cout << nomes[i] << " - Média: " << media[i] << " - ";
+    if (media[i] >= 7){
+        cout << "aprovado" << endl;
+        aprovados++;
+    }
+    else if ( media[i] >= 5 ){
+        cout << "recuperação" << endl;
+        recuperacao++;
+    }
+    else{
+        cout << "reprovado" << endl;
+        reprovados++;
+    }
+}
+
+cout << "\nResumo: " << aprovados << "aprovados" << recuperacao << " em recuperacao" << reprovados << "reprovados" << endl;
 
     return 0;
 }
