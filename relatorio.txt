@@ -1,5 +1,8 @@
-=== RELATÓRIO ===
-manu - MÉDIA: 9 - Aprovado
-lucas - MÉDIA: 8.66667 - Aprovado
+Relatorio gerado em: Wed Jun 03 09:48:45 2026
+=== RELATORIO ===
+manu - MÉDIA: 9.5 - Aprovado
+lucas - MÉDIA: 8.5 - Aprovado
 
-Resumo: 2aprovados 0recuperaçao 0reprovados
+Resumo: 2 aprovados, 0 em recuperacao, 0 reprovados
+Maior media: manu (9.5)
+Menor media: lucas (8.5)

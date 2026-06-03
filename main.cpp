@@ -1,13 +1,12 @@
 #include <iostream>
 #include <string>
-using namespace std;
 #include <fstream>
 #include <ctime>
+using namespace std;
 
 int main()
 {
-
-    // ENTRADA -Declaração de variáveis
+    // ENTRADA - Declaração de variáveis
     string nomes[20];
     int qtdAlunos;
     float notas[20][5];
@@ -18,7 +17,7 @@ int main()
     // PROCESSAMENTO
 
     // LEITURA DE ALUNOS (commit 1)
-    cout << "===SISTEMA DE NOTAS v4.0===" << endl;
+    cout << "===SISTEMA DE NOTAS v4.1===" << endl;
     cout << "1 - Novo relatorio " << endl;
     cout << "2 - Ver relatorio salvo" << endl;
     cout << "3 - Sobre o sistema " << endl;
@@ -28,7 +27,7 @@ int main()
     // LEITURA DE ARQUIVO
     if (opcaoInicial == 2)
     {
-        ifstream leitura("relatório.txt");
+        ifstream leitura("relatorio.txt");
         if (leitura.is_open())
         {
             string linha;
@@ -52,8 +51,8 @@ int main()
         cout << "desenvolvido por: Emanuelli" << endl;
         cout << "turma: LOPAL 2026 - SENAI-SP" << endl;
     }
-    do
 
+    do
     {
         cout << "Quantidade de alunos (1 a 20): ";
         cin >> qtdAlunos;
@@ -63,7 +62,7 @@ int main()
 
     for (int i = 0; i < qtdAlunos; i++)
     {
-        cout << "Nome do aluno: " << i + 1 << ": ";
+        cout << "Nome do aluno " << i + 1 << ": ";
         getline(cin, nomes[i]);
     }
 
@@ -82,13 +81,14 @@ int main()
         {
             do
             {
-                cout << "Disciplina" << j + 1 << "(1 a 5)";
+                cout << "Disciplina " << j + 1 << " (1 a 5): ";
                 cin >> notas[i][j];
             } while (notas[i][j] < 0 || notas[i][j] > 10);
             soma += notas[i][j];
         }
         media[i] = soma / qtdDisciplinas;
     }
+
     // SAÍDA
     cout << "\nAlunos cadastrados: " << endl;
     for (int i = 0; i < qtdAlunos; i++)
@@ -97,8 +97,15 @@ int main()
     }
 
     // CLASSIFICAÇÃO (commit 3)
-    cout << " \n=== RELATÓRIO ===" << endl;
+    time_t agora = time(0);
+    char* dataHora = ctime(&agora);
+
+    cout << "\nRelatorio gerado em: " << dataHora;
+    cout << "=== RELATÓRIO ===" << endl;
+
     int aprovados = 0, recuperacao = 0, reprovados = 0;
+    int indiceMaior = 0;
+    int indiceMenor = 0;
 
     for (int i = 0; i < qtdAlunos; i++)
     {
@@ -118,16 +125,27 @@ int main()
             cout << "reprovado" << endl;
             reprovados++;
         }
-    }
+        
+        if (media[i] > media[indiceMaior])
+        {
+            indiceMaior = i;
+        }
+        if (media[i] < media[indiceMenor])
+        {
+            indiceMenor = i;
+        }
+    } // Chave que fecha o laço FOR corretamente.
 
-    cout << "\nResumo: " << aprovados << "aprovados" << recuperacao << " em recuperacao" << reprovados << "reprovados" << endl;
-
+    // Agora todos os elementos abaixo continuam protegidos por estarem dentro da main()
+    cout << "\nResumo: " << aprovados << " aprovados, " << recuperacao << " em recuperacao, " << reprovados << " reprovados" << endl;
+    cout << "Maior media: " << nomes[indiceMaior] << " (" << media[indiceMaior] << ")" << endl;
+    cout << "Menor media: " << nomes[indiceMenor] << " (" << media[indiceMenor] << ")" << endl;
+    
     ofstream arquivo("relatorio.txt");
 
-    // C
     if (arquivo.is_open())
     {
-      
+        arquivo << "Relatorio gerado em: " << dataHora;
         arquivo << "=== RELATORIO ===" << endl;
         for (int i = 0; i < qtdAlunos; i++)
         {
@@ -144,21 +162,18 @@ int main()
             {
                 arquivo << "Reprovado" << endl;
             }
-            
-        time_t agora = time(0);
-char* dataHora = ctime(&agora);
-arquivo << "Data do relatorio: " << dataHora << endl;
         }
-        arquivo << "\nResumo: " << aprovados << "aprovados, " << recuperacao << "recuperaçao, " << reprovados << "reprovados" << endl;
+        arquivo << "\nResumo: " << aprovados << " aprovados, " << recuperacao << " em recuperacao, " << reprovados << " reprovados" << endl;
+        arquivo << "Maior media: " << nomes[indiceMaior] << " (" << media[indiceMaior] << ")" << endl;
+        arquivo << "Menor media: " << nomes[indiceMenor] << " (" << media[indiceMenor] << ")" << endl;
 
         arquivo.close();
         cout << "\nRelatorio salvo em relatorio.txt" << endl;
-    
- }
-
-  else {
-         cout << "Erro ao criar arquivo." << endl;
-       }
+    }
+    else 
+    {
+        cout << "Erro ao criar arquivo." << endl;
+    }
 
     return 0;
 }
