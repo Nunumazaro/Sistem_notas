@@ -2,6 +2,7 @@
 #include <string>
 using namespace std;
 #include <fstream>
+#include <ctime>
 
 int main()
 {
@@ -126,7 +127,8 @@ int main()
     // C
     if (arquivo.is_open())
     {
-        arquivo << "=== RELATÓRIO ===" << endl;
+      
+        arquivo << "=== RELATORIO ===" << endl;
         for (int i = 0; i < qtdAlunos; i++)
         {
             arquivo << nomes[i] << " - MÉDIA: " << media[i] << " - ";
@@ -142,13 +144,21 @@ int main()
             {
                 arquivo << "Reprovado" << endl;
             }
+            
+        time_t agora = time(0);
+char* dataHora = ctime(&agora);
+arquivo << "Data do relatorio: " << dataHora << endl;
         }
-        arquivo << "\nResumo: " << aprovados << "aprovados" << recuperacao << "recuperaçao" << reprovados << "reprovados" << endl;
+        arquivo << "\nResumo: " << aprovados << "aprovados, " << recuperacao << "recuperaçao, " << reprovados << "reprovados" << endl;
 
         arquivo.close();
         cout << "\nRelatorio salvo em relatorio.txt" << endl;
-        cout << "Erro ao criar arquivo." << endl;
-    }
+    
+ }
+
+  else {
+         cout << "Erro ao criar arquivo." << endl;
+       }
 
     return 0;
 }
