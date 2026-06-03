@@ -3,8 +3,10 @@
 using namespace std;
 #include <fstream>
 
+
 int main()
 {
+
     // ENTRADA -Declaração de variáveis
     string nomes[20];
     int qtdAlunos;
@@ -17,9 +19,10 @@ int main()
 
     // LEITURA DE ALUNOS (commit 1)
     cout << "===SISTEMA DE NOTAS v4.0===" << endl;
-    cout << "1 - novo relatório " << endl;
-    cout << "2 - ver relatório salvo" << endl;
-    cout << "escolha um opção: " << endl;
+    cout << "1 - Novo relatorio " << endl;
+    cout << "2 - Ver relatorio salvo" << endl;
+    cout << "3 - Sobre o sistema " << endl;
+    cout << "escolha um opcao: " << endl;
     cin >> opcaoInicial;
 
     // LEITURA DE ARQUIVO
@@ -138,9 +141,19 @@ int main()
         arquivo << "\nResumo: " << aprovados << "aprovados" << recuperacao << "recuperaçao" << reprovados << "reprovados" << endl;
 
         arquivo.close();
-        cout << "\nRelatório salvo em relatorio.txt" << endl;
+        cout << "\nRelatorio salvo em relatorio.txt" << endl;
         cout << "Erro ao criar arquivo." << endl;
     }
+
+
+//sobre o sistema
+if (opcaoInicial == 3)
+{
+    cout << " === SOBRE ===" << endl;
+    cout << "sistema de notas v4.1" << endl;
+    cout << "desenvolvido por: Emanuelli" << endl;
+    cout << "turma: LOPAL 2026 - SENAI-SP" << endl;
+}
 
     return 0;
 }
