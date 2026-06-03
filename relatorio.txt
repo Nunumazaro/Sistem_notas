@@ -1,5 +1,5 @@
 === RELATÓRIO ===
-manu - MÉDIA: 9.125 - Aprovado
-lucas - MÉDIA: 7.875 - Aprovado
+manu - MÉDIA: 9 - Aprovado
+lucas - MÉDIA: 8.66667 - Aprovado
 
-Resumo: 2aprovados0recuperaçao0reprovados
+Resumo: 2aprovados 0recuperaçao 0reprovados

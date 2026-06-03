@@ -3,7 +3,6 @@
 using namespace std;
 #include <fstream>
 
-
 int main()
 {
 
@@ -45,7 +44,13 @@ int main()
             return 0;
         }
     }
-
+    else if (opcaoInicial == 3)
+    {
+        cout << " === SOBRE ===" << endl;
+        cout << "sistema de notas v4.1" << endl;
+        cout << "desenvolvido por: Emanuelli" << endl;
+        cout << "turma: LOPAL 2026 - SENAI-SP" << endl;
+    }
     do
 
     {
@@ -144,16 +149,6 @@ int main()
         cout << "\nRelatorio salvo em relatorio.txt" << endl;
         cout << "Erro ao criar arquivo." << endl;
     }
-
-
-//sobre o sistema
-if (opcaoInicial == 3)
-{
-    cout << " === SOBRE ===" << endl;
-    cout << "sistema de notas v4.1" << endl;
-    cout << "desenvolvido por: Emanuelli" << endl;
-    cout << "turma: LOPAL 2026 - SENAI-SP" << endl;
-}
 
     return 0;
 }
